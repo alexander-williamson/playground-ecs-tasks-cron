@@ -1,7 +1,7 @@
 locals {
   image_name = "test-cron-runner"
   stack_name = "test-playground-ecs-tasks-cron"
-  schedule_expression = "cron(0 * * * ? *)"
+  schedule_expression = "cron(* * * * ? *)"
 }
 
 # lookups
