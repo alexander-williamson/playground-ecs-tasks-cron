@@ -1,0 +1,16 @@
+# syntax=docker/dockerfile:1
+
+FROM ubuntu
+WORKDIR /app
+COPY /app /app/
+ARG version=1.9.3
+RUN apt-get update
+RUN apt-get install -y git
+RUN apt-get install -y wget
+RUN apt-get install -y unzip
+RUN wget https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip
+RUN unzip terraform_${version}_linux_amd64.zip
+RUN mv terraform /usr/local/bin/
+RUN terraform --version
+RUN chmod u+r+x execute.sh
+CMD ["./execute.sh"]
